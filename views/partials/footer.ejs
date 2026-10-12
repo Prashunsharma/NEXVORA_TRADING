@@ -1,0 +1,22 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="/" class="brand"><img class="brand-logo" src="/images/nexvora-logo.jpeg" alt="Nexvora Trading &amp; Solution logo" width="54" height="54"><span class="brand-name">NEXVORA<small>TRADING &amp; SOLUTION</small></span></a>
+        <p>Learn. Trade. Grow. A learning-focused approach to financial markets, structured analysis and risk awareness.</p>
+        <div class="footer-socials">
+          <% if (site.social.instagram && site.social.instagram.startsWith("https://")) { %><a href="<%= site.social.instagram %>" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/images/social/instagram.svg" alt="" width="25" height="25" loading="lazy"></a><% } %>
+          <% if (site.social.facebook && site.social.facebook.startsWith("https://")) { %><a href="<%= site.social.facebook %>" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img src="/images/social/facebook.svg" alt="" width="25" height="25" loading="lazy"></a><% } %>
+          <% if (site.social.youtube && site.social.youtube.startsWith("https://")) { %><a href="<%= site.social.youtube %>" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="/images/social/youtube.svg" alt="" width="25" height="25" loading="lazy"></a><% } %>
+          <% if (site.social.telegram && site.social.telegram.startsWith("https://")) { %><a href="<%= site.social.telegram %>" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><img src="/images/social/telegram.svg" alt="" width="25" height="25" loading="lazy"></a><% } %>
+        </div>
+      </div>
+      <div class="footer-col"><h3><%- include("icon", { name: "compass", size: 16 }) %> Explore</h3><a href="/#about">About Nexvora</a><a href="/#services">Trading Services</a><a href="/#programs">Programs &amp; Offers</a><a href="/#community">Community</a></div>
+      <div class="footer-col"><h3><%- include("icon", { name: "mail", size: 16 }) %> Get in touch</h3><a href="/#contact">Registration / Enquiry</a><% if (site.email) { %><a href="mailto:<%= site.email %>"><%= site.email %></a><% } else { %><span>Business email to be configured</span><% } %></div>
+      <div class="footer-col"><h3><%- include("icon", { name: "info", size: 16 }) %> Important info</h3><a href="/privacy">Privacy Notice (Draft)</a><a href="/terms">Terms (Draft)</a><a href="/risk-disclosure">Risk Disclosure</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span data-year></span> Nexvora Trading &amp; Solution. All rights reserved.</span><span class="footer-risk"><%- include("icon", { name: "shield-alert", size: 15 }) %> Trading involves risk. Educational content only; no guaranteed outcomes.</span></div>
+  </div>
+</footer>
+<a class="back-top" href="#home" aria-label="Back to top"><%- include("icon", { name: "arrow-up", size: 20 }) %></a>
+<script src="/js/main.js" defer></script>

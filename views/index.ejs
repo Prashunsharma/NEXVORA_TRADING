@@ -1,0 +1,143 @@
+<%- include("partials/head", { title, description, canonical }) %>
+<body>
+  <a class="sr-only" href="#main">Skip to main content</a>
+  <%- include("partials/header") %>
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="pill"><i></i> EDUCATION · ANALYSIS · DISCIPLINE</span>
+          <p class="eyebrow hero-eyebrow">Learn. Trade. Grow.</p>
+          <h1>NEXVORA<br><span>TRADING</span></h1>
+          <h2>Your Partner in Market Learning</h2>
+          <p class="hero-copy">Explore market concepts, trading education, structured analysis, and risk-aware learning resources to help you make more informed decisions.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="<%= site.social.telegram && site.social.telegram.startsWith("https://") ? site.social.telegram : '#contact' %>" <%= site.social.telegram && site.social.telegram.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>><%- include("partials/icon", { name: "send", size: 17 }) %> Join Telegram <%- include("partials/icon", { name: "arrow-up-right", size: 15 }) %></a>
+            <a class="btn secondary" href="<%= site.social.youtube && site.social.youtube.startsWith("https://") ? site.social.youtube : '#contact' %>" <%= site.social.youtube && site.social.youtube.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>><%- include("partials/icon", { name: "activity", size: 17 }) %> Watch on YouTube <%- include("partials/icon", { name: "arrow-up-right", size: 15 }) %></a>
+            <a class="btn secondary" href="#programs"><%- include("partials/icon", { name: "book-open", size: 17 }) %> Explore Programs <%- include("partials/icon", { name: "arrow-down", size: 15 }) %></a>
+          </div>
+          <div class="hero-proof">
+            <span><%- include("partials/icon", { name: "graduation-cap", size: 19 }) %> Market Education</span>
+            <span><%- include("partials/icon", { name: "chart", size: 19 }) %> Structured Analysis</span>
+            <span><%- include("partials/icon", { name: "calendar-clock", size: 19 }) %> Live Learning</span>
+            <span><%- include("partials/icon", { name: "shield-check", size: 19 }) %> Risk Awareness</span>
+          </div>
+        </div>
+        <div class="chart-frame" aria-label="Illustrative market chart, not live market data">
+          <div class="chart-top"><div><div class="chart-label">Market perspective</div><strong>Read the structure. Respect the risk.</strong></div><span class="chart-status">EDUCATIONAL VIEW</span></div>
+          <svg class="chart-svg" viewBox="0 0 560 320" role="img" aria-label="Illustrative market chart; no live prices shown">
+            <defs><linearGradient id="area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#00f5a0" stop-opacity=".24"/><stop offset="1" stop-color="#00f5a0" stop-opacity="0"/></linearGradient></defs>
+            <g stroke="#164052" stroke-width="1" opacity=".7"><path d="M10 40H550M10 95H550M10 150H550M10 205H550M10 260H550M60 15V315M130 15V315M200 15V315M270 15V315M340 15V315M410 15V315M480 15V315"/></g>
+            <g stroke-width="2"><path d="M38 215V261M80 195V245M122 213V276M164 160V230M206 149V200M248 163V224M290 135V190M332 113V172M374 125V187M416 86V146M458 65V120M500 52V103" stroke="#00f5a0"/><rect x="31" y="231" width="14" height="24" fill="#00c982"/><rect x="73" y="204" width="14" height="27" fill="#00c982"/><rect x="115" y="223" width="14" height="30" fill="#d95e6b"/><rect x="157" y="177" width="14" height="38" fill="#00c982"/><rect x="199" y="159" width="14" height="26" fill="#00c982"/><rect x="241" y="178" width="14" height="28" fill="#d95e6b"/><rect x="283" y="145" width="14" height="32" fill="#00c982"/><rect x="325" y="124" width="14" height="29" fill="#00c982"/><rect x="367" y="141" width="14" height="25" fill="#d95e6b"/><rect x="409" y="94" width="14" height="36" fill="#00c982"/><rect x="451" y="76" width="14" height="26" fill="#00c982"/><rect x="493" y="61" width="14" height="28" fill="#00c982"/></g>
+            <path d="M18 249L67 220L109 240L151 198L193 183L235 199L277 166L319 144L361 157L403 115L445 93L487 78L544 42V315H18Z" fill="url(#area)"/><path d="M18 249L67 220L109 240L151 198L193 183L235 199L277 166L319 144L361 157L403 115L445 93L487 78L544 42" fill="none" stroke="#00f5a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="544" cy="42" r="5" fill="#00f5a0"/>
+          </svg>
+          <div class="chart-bottom"><div class="chart-stat"><small>Focus</small><strong class="accent">Structure</strong></div><div class="chart-stat"><small>Approach</small><strong>Education-first</strong></div><div class="chart-stat"><small>Priority</small><strong>Risk awareness</strong></div></div>
+          <div class="float-note"><strong>Learn before you act</strong>Illustrative graphic · Not live data</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Learning principles"><div class="wrap grid-4">
+      <article class="feature"><div class="icon-box"><%- include("partials/icon", { name: "graduation-cap", size: 25 }) %></div><h3>Market Education</h3><p>Build understanding of how markets and price action work.</p></article>
+      <article class="feature"><div class="icon-box"><%- include("partials/icon", { name: "chart", size: 25 }) %></div><h3>Structured Analysis</h3><p>Learn to look at context, scenarios and market structure.</p></article>
+      <article class="feature"><div class="icon-box"><%- include("partials/icon", { name: "calendar-clock", size: 25 }) %></div><h3>Live Learning</h3><p>Explore discussions and learning sessions as they become available.</p></article>
+      <article class="feature"><div class="icon-box"><%- include("partials/icon", { name: "shield-check", size: 25 }) %></div><h3>Risk Awareness</h3><p>Put planning, uncertainty and capital protection in focus.</p></article>
+    </div></section>
+
+    <section class="section alt" id="about"><div class="wrap about-grid">
+      <div class="about-art" aria-label="Animated Nexvora brand emblem">
+        <span class="orb-chip one">LEARN WITH CLARITY</span>
+        <div class="orbit-logo-stage">
+          <span class="orbit-ring ring-outer" aria-hidden="true"><span class="orbit-particle"></span></span>
+          <span class="orbit-ring ring-middle" aria-hidden="true"><span class="orbit-particle"></span></span>
+          <span class="orbit-ring ring-inner" aria-hidden="true"></span>
+          <span class="logo-aura" aria-hidden="true"></span>
+          <span class="logo-scanner" aria-hidden="true"></span>
+          <img class="orbit-logo" src="/images/nexvora-mark.png" alt="Nexvora's green and silver rising-arrow emblem" width="820" height="558" loading="lazy" decoding="async">
+        </div>
+        <span class="orb-chip two">DISCIPLINE OVER HYPE</span>
+        <span class="orbit-caption" aria-hidden="true">LEARN <i>·</i> TRADE <i>·</i> GROW</span>
+      </div>
+      <div class="about-copy"><span class="eyebrow">About Nexvora</span><h2>Better understanding starts with <span class="accent-text">better learning.</span></h2>
+        <p>Nexvora Trading is a learning-focused platform for people who want to better understand financial markets. We focus on clear explanations, practical market concepts, structured analysis, disciplined decision-making, and continuous learning.</p>
+        <p>Our education-first approach emphasizes building knowledge and understanding uncertainty instead of promising outcomes or presenting markets as easy to predict.</p>
+        <ul class="check-list">
+          <li><%- include("partials/icon", { name: "check-circle", size: 18 }) %><span>Clear and accessible market concepts</span></li>
+          <li><%- include("partials/icon", { name: "check-circle", size: 18 }) %><span>Practical learning with risk in view</span></li>
+          <li><%- include("partials/icon", { name: "check-circle", size: 18 }) %><span>A community built around ongoing education</span></li>
+        </ul>
+        <a class="btn secondary" href="#contact">Learn More <%- include("partials/icon", { name: "arrow-up-right", size: 16 }) %></a>
+      </div>
+    </div></section>
+
+    <section class="section" id="services"><div class="wrap">
+      <div class="section-head"><span class="eyebrow">What We Focus On</span><h2>Knowledge for more <span class="accent-text">structured decisions.</span></h2><p>Explore learning areas designed to help you understand markets, review scenarios and develop disciplined habits.</p></div>
+      <div class="grid-3">
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "chart", size: 25 }) %></div><h3>Market Analysis</h3><p>Educational market observations, chart context and ways to frame different market scenarios.</p><span class="learn-tag">CONTEXT BEFORE CONCLUSIONS <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "target", size: 25 }) %></div><h3>Trading Setups</h3><p>Structured examples for studying potential market scenarios without treating them as guaranteed signals.</p><span class="learn-tag">STUDY THE SCENARIO <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "arrows-left-right", size: 25 }) %></div><h3>Entry, Exit &amp; Stop-Loss Concepts</h3><p>Understand trade planning, invalidation points and how risk can be considered before a decision.</p><span class="learn-tag">PLAN FOR UNCERTAINTY <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "calendar-clock", size: 25 }) %></div><h3>Live Learning Sessions</h3><p>Interactive education and market discussions when sessions are scheduled and announced.</p><span class="learn-tag">LEARN TOGETHER <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "book-open", size: 25 }) %></div><h3>Trading Education</h3><p>Learning resources for beginners and developing traders, from core ideas to more advanced concepts.</p><span class="learn-tag">BUILD YOUR FOUNDATION <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+        <article class="feature service-card"><div class="icon-box"><%- include("partials/icon", { name: "shield-check", size: 25 }) %></div><h3>Risk Management</h3><p>Explore position sizing, risk/reward thinking and capital protection as core parts of trading education.</p><span class="learn-tag">RESPECT THE RISK <%- include("partials/icon", { name: "arrow-up-right", size: 14 }) %></span></article>
+      </div>
+    </div></section>
+
+    <section class="section alt" id="programs"><div class="wrap">
+      <div class="section-head"><span class="eyebrow">Programs &amp; Offers</span><h2>Your next step in <span class="accent-text">market learning.</span></h2><p>Program details are being prepared. Join the enquiry list to hear about verified updates when they are announced.</p></div>
+      <div class="grid-3">
+        <article class="program-card featured"><div class="program-topline"><div class="icon-box"><%- include("partials/icon", { name: "graduation-cap", size: 24 }) %></div><span class="status">Upcoming Program</span></div><h3>Trading Foundations</h3><p>Explore core market concepts, chart reading and the habits that support more considered learning.</p><ul><li>Foundational topics</li><li>Structured learning path</li><li>Risk-awareness principles</li></ul><a class="btn primary" href="#contact">Join the Waitlist ↗</a></article>
+        <article class="program-card"><div class="program-topline"><div class="icon-box"><%- include("partials/icon", { name: "candles", size: 24 }) %></div><span class="status">In Development</span></div><h3>Technical Analysis Lab</h3><p>Study chart structure, scenarios and analytical frameworks in a learning-focused environment.</p><ul><li>Chart concepts</li><li>Scenario-based examples</li><li>Learning resources</li></ul><a class="btn secondary" href="#contact">Register Interest ↗</a></article>
+        <article class="program-card"><div class="program-topline"><div class="icon-box"><%- include("partials/icon", { name: "brain", size: 24 }) %></div><span class="status">Planned</span></div><h3>AI-Assisted Research</h3><p>A future direction for research tools that support exploration while recognizing market uncertainty.</p><ul><li>Research workflow concepts</li><li>Tool updates as available</li><li>No certainty or return promises</li></ul><a class="btn secondary" href="#contact">Get Updates ↗</a></article>
+      </div><p class="small-note center">Pricing, inclusions and launch dates have not yet been confirmed. No payment is collected on this page.</p>
+    </div></section>
+
+    <section class="section" id="community"><div class="wrap">
+      <div class="section-head"><span class="eyebrow">Stay Connected</span><h2>Join Our <span class="accent-text">Community.</span></h2><p>Follow Nexvora for educational content, market discussions, new videos, and community updates.</p></div>
+      <div class="grid-4">
+        <article class="feature social-card"><div class="social-head"><img class="social-logo" src="/images/social/instagram.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><h3>Instagram</h3></div><p>Reels, educational posts, and brand updates.</p><a class="btn secondary" href="<%= site.social.instagram && site.social.instagram.startsWith("https://") ? site.social.instagram : '#contact' %>" <%= site.social.instagram && site.social.instagram.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>>Follow Instagram ↗</a></article>
+        <article class="feature social-card"><div class="social-head"><img class="social-logo" src="/images/social/youtube.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><h3>YouTube</h3></div><p>Trading education, market explainers, and videos.</p><a class="btn secondary" href="<%= site.social.youtube && site.social.youtube.startsWith("https://") ? site.social.youtube : '#contact' %>" <%= site.social.youtube && site.social.youtube.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>>Subscribe on YouTube ↗</a></article>
+        <article class="feature social-card"><div class="social-head"><img class="social-logo" src="/images/social/telegram.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><h3>Telegram</h3></div><p>Community discussions, announcements, and educational updates.</p><a class="btn primary" href="<%= site.social.telegram && site.social.telegram.startsWith("https://") ? site.social.telegram : '#contact' %>" <%= site.social.telegram && site.social.telegram.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>>Join Telegram ↗</a></article>
+        <article class="feature social-card"><div class="social-head"><img class="social-logo" src="/images/social/facebook.svg" alt="" width="48" height="48" loading="lazy" decoding="async"><h3>Facebook</h3></div><p>Community posts and announcements.</p><a class="btn secondary" href="<%= site.social.facebook && site.social.facebook.startsWith("https://") ? site.social.facebook : '#contact' %>" <%= site.social.facebook && site.social.facebook.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>>Follow Facebook ↗</a></article>
+      </div>
+      <p class="small-note center">Social icons are shown for recognition. Add your verified official profile URLs in the .env file to activate the links. The enquiry form stores submissions locally until you connect Neon PostgreSQL.</p>
+      <div class="section-head compact-head"><span class="eyebrow">Real Voices. Real Community.</span><h2>Community Feedback</h2></div>
+      <div class="empty-state"><div class="icon-box"><%- include("partials/icon", { name: "users", size: 26 }) %></div><h3>Community stories coming soon.</h3><p>We’ll share genuine feedback here when it is available and approved for publication.</p></div>
+    </div></section>
+
+    <section class="section alt" id="contact"><div class="wrap contact-grid">
+      <div class="contact-copy"><span class="eyebrow">Contact &amp; Registration</span><h2>Start your <span class="accent-text">learning journey.</span></h2>
+        <p>Tell us a little about your interests. Send an enquiry to register interest in upcoming educational programs and community updates.</p>
+        <div class="contact-item"><div class="icon-box"><%- include("partials/icon", { name: "mail", size: 20 }) %></div><div><small>Email</small><strong><%= site.email || "Email address to be configured" %></strong></div></div>
+        <div class="contact-item"><div class="icon-box"><%- include("partials/icon", { name: "users", size: 20 }) %></div><div><small>Community</small><strong>Telegram · Instagram · YouTube · Facebook</strong><p class="micro-copy">Official links activate once configured in the environment settings.</p></div></div>
+        <div class="contact-item"><div class="icon-box"><%- include("partials/icon", { name: "shield-check", size: 20 }) %></div><div><small>Our approach</small><strong>Education-first. Risk-aware. No guaranteed outcomes.</strong></div></div>
+        <p class="small-note">Submitting this form means you agree to be contacted about your enquiry. The privacy page is a draft and must be reviewed before launch. <a class="inline-link" href="/privacy">Read the draft privacy notice</a>.</p>
+      </div>
+      <form class="contact-form" id="enquiry-form" action="/enquiries" method="post">
+        <h3 class="form-title"><%- include("partials/icon", { name: "book-open", size: 21 }) %> Registration / Enquiry</h3><p class="form-subtitle">Fields marked * are required.</p>
+        <% if (error) { %><div class="form-error" role="alert"><%= error %></div><% } %>
+        <% if (submitted) { %><div class="form-success" role="status"><strong>Enquiry received.</strong><p>Thank you for reaching out to Nexvora. <%= site.databaseConfigured ? "Your enquiry has been saved to the configured PostgreSQL database." : "Your enquiry has been saved locally on this development server. Neon/PostgreSQL is not connected yet." %></p></div><% } %>
+        <div class="form-grid">
+          <div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Your full name"></div>
+          <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com"></div>
+          <div class="field"><label for="phone">Phone with country code *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="24" placeholder="+91 98765 43210"></div>
+          <div class="field"><label for="experience">Trading experience *</label><select id="experience" name="experience" required><option value="">Select experience</option><option>Just exploring</option><option>Beginner</option><option>1–3 years</option><option>More than 3 years</option></select></div>
+          <div class="field"><label for="country">Country (optional)</label><input id="country" name="country" autocomplete="country-name" maxlength="80" placeholder="Your country"></div>
+          <div class="field"><label for="market">Preferred market (optional)</label><select id="market" name="market"><option value="">Choose a market</option><option>Indian equities</option><option>Futures and options</option><option>Forex</option><option>Cryptocurrency</option><option>US markets</option><option>Other / not decided</option></select></div>
+          <div class="field full"><label for="goal">Learning goals (optional)</label><select id="goal" name="goal"><option value="">Select your main learning goal</option><option>Trading fundamentals</option><option>Technical analysis</option><option>Risk management</option><option>Trading psychology</option><option>AI-assisted trading tools</option><option>Market research and analysis</option></select></div>
+          <div class="field full"><label for="message">Message or questions (optional)</label><textarea id="message" name="message" maxlength="2000" placeholder="What would you like to learn?"></textarea></div>
+        </div>
+        <div class="honeypot" aria-hidden="true"><label for="website">Leave this field blank</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input name="consent" type="checkbox" required><span>I consent to Nexvora Trading &amp; Solution contacting me about this enquiry. I understand I can request that my details be removed. *</span></label>
+        <button class="btn primary submit-btn" type="submit"><span class="submit-label">Send enquiry</span><%- include("partials/icon", { name: "send", size: 17 }) %></button>
+        <p class="risk-note">Do not include account passwords, financial account details or other sensitive information. Trading involves risk; no returns are guaranteed.</p>
+      </form>
+    </div></section>
+
+    <section class="section" id="risk"><div class="wrap">
+      <div class="section-head"><span class="eyebrow">A Clear Approach</span><h2>Understand the risk. <span class="accent-text">Keep learning.</span></h2><p>All market examples and educational content are provided for general learning and informational purposes.</p></div>
+      <div class="empty-state"><div class="icon-box"><%- include("partials/icon", { name: "shield-alert", size: 26 }) %></div><h3>Trading risk disclosure</h3><p>Trading financial instruments involves risk and losses are possible, including loss of capital. Educational content is not individualized financial, investment, tax or legal advice. Market examples are illustrative, and no returns or profits are guaranteed. Consider your own circumstances and consult an appropriately qualified professional where necessary.</p><p class="disclosure-link"><a class="inline-link" href="/risk-disclosure">Read the full risk disclosure ↗</a></p></div>
+    </div></section>
+  </main>
+  <%- include("partials/footer") %>
+</body>
+</html>

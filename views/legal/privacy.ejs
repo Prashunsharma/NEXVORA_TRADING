@@ -1,0 +1,15 @@
+<%- include("../partials/head", { title, description, canonical }) %>
+<body><%- include("../partials/header") %>
+<main class="legal-page wrap">
+  <p class="eyebrow">Legal information · Draft</p><h1>Privacy Notice (Draft)</h1>
+  <p><strong>Last updated: 11 October 2026</strong></p>
+  <div class="legal-notice legal-draft"><strong>Draft — not ready for publication.</strong> This is a working placeholder, not a verified legal policy. Confirm the actual data flow, legal business identity, applicable law, retention period, contact channel and hosting providers before publishing.</div><p>This draft describes the current website form at a high level. It must be checked against the final deployment and the way enquiries are actually handled.</p>
+  <h2>Information we collect</h2><p>When you submit an enquiry, the form may collect your name, email address, phone number, country, trading experience, preferred market, learning goals and message. The site records your consent and submission time.</p>
+  <h2>How information is used</h2><p>Information is used to respond to your enquiry, provide requested program or community updates, maintain operational records, and protect the website from abuse. Do not submit passwords, bank details or other sensitive financial information.</p>
+  <h2>Storage and service providers</h2><p>During local development, enquiries are stored in a local JSON file. When a PostgreSQL connection is configured, enquiries are stored in that database. Production deployments should use appropriate access controls, backups, retention rules and provider agreements.</p>
+  <h2>Sharing and retention — confirm before launch</h2><p>The actual recipients, retention period and deletion process have not been confirmed. Document who can access enquiries, which hosting or database providers process them, how long records are kept, and how deletion requests will be handled. Do not publish this page as final until those details are verified.</p>
+  <h2>Contact and privacy requests — configure before launch</h2><p>A verified business contact email and a working process for access, correction or deletion requests must be added before publication. The site currently has no dedicated privacy-request workflow.</p>
+  <h2>Security and changes</h2><p>Reasonable safeguards should be used to protect information, but no internet transmission or storage system can be guaranteed completely secure. This policy may be updated as the service changes.</p>
+  <div class="legal-notice legal-draft"><strong>Required before launch:</strong> add your legal business name, working contact email, actual data retention period, hosting/database provider details and jurisdiction-specific privacy terms.</div>
+  <p><a class="btn secondary" href="/">← Back to home</a></p>
+</main><%- include("../partials/footer") %></body></html>

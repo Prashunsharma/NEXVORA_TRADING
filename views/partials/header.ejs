@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="wrap nav">
+    <a href="/" class="brand" aria-label="Nexvora home">
+      <img class="brand-logo" src="/images/nexvora-logo.jpeg" alt="Nexvora Trading &amp; Solution logo" width="54" height="54">
+      <span class="brand-name">NEXVORA<small>TRADING &amp; SOLUTION</small></span>
+    </a>
+    <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+      <a href="/#home"><%- include("icon", { name: "house", size: 16, className: "nav-icon" }) %><span>Home</span></a>
+      <a href="/#about"><%- include("icon", { name: "users", size: 16, className: "nav-icon" }) %><span>About</span></a>
+      <a href="/#services"><%- include("icon", { name: "chart", size: 16, className: "nav-icon" }) %><span>Services</span></a>
+      <a href="/#programs"><%- include("icon", { name: "layers", size: 16, className: "nav-icon" }) %><span>Programs</span></a>
+      <a href="/#community"><%- include("icon", { name: "message-circle", size: 16, className: "nav-icon" }) %><span>Community</span></a>
+      <a href="/#contact"><%- include("icon", { name: "mail", size: 16, className: "nav-icon" }) %><span>Contact</span></a>
+      <a href="<%= site.social.telegram && site.social.telegram.startsWith("https://") ? site.social.telegram : '/#contact' %>" class="btn primary" <%= site.social.telegram && site.social.telegram.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>><%- include("icon", { name: "send", size: 16 }) %><span>Join Telegram</span><%- include("icon", { name: "arrow-up-right", size: 14 }) %></a>
+    </nav>
+    <div class="nav-right">
+      <div class="social-mini" aria-label="Social profiles">
+        <% if (site.social.instagram && site.social.instagram.startsWith("https://")) { %><a href="<%= site.social.instagram %>" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="/images/social/instagram.svg" alt="" width="22" height="22"></a><% } %>
+        <% if (site.social.youtube && site.social.youtube.startsWith("https://")) { %><a href="<%= site.social.youtube %>" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><img src="/images/social/youtube.svg" alt="" width="22" height="22"></a><% } %>
+      </div>
+        <a class="btn secondary nav-cta" href="/#community">
+  <%- include("icon", { name: "users", size: 18 }) %>
+  <span>Community</span>
+</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><%- include("icon", { name: "menu", size: 22 }) %></button>
+    </div>
+  </div>
+</header>
