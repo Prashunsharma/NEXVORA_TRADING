@@ -924,9 +924,16 @@ initializeDatabase()
     });
   })
   .catch(error => {
-    console.error("Startup failed:", error.message);
-    process.exit(1);
-  });
+  console.error("Startup failed:", error.code || error.name || "Error", error.message || "(no message)");
+  if (error && Array.isArray(error.errors)) {
+    for (const sub of error.errors) {
+      console.error("  caused by:", sub.code || sub.name || "Error", sub.message || "(no message)", sub.address || "", sub.port || "");
+    }
+  }
+  console.error(error);
+  process.exit(1);
+});
+
 
 async function shutdown() {
   if (pool) await pool.end();
