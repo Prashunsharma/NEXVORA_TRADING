@@ -12,11 +12,14 @@
         </div>
       </div>
       <div class="footer-col"><h3><%- include("icon", { name: "compass", size: 16 }) %> Explore</h3><a href="/#about">About Nexvora</a><a href="/#services">Trading Services</a><a href="/#programs">Programs &amp; Offers</a><a href="/#community">Community</a></div>
-      <div class="footer-col"><h3><%- include("icon", { name: "mail", size: 16 }) %> Get in touch</h3><a href="/#contact">Registration / Enquiry</a><% if (site.email) { %><a href="mailto:<%= site.email %>"><%= site.email %></a><% } else { %><span>Business email to be configured</span><% } %></div>
-      <div class="footer-col"><h3><%- include("icon", { name: "info", size: 16 }) %> Important info</h3><a href="/privacy">Privacy Notice (Draft)</a><a href="/terms">Terms (Draft)</a><a href="/risk-disclosure">Risk Disclosure</a></div>
+      <div class="footer-col"><h3><%- include("icon", { name: "mail", size: 16 }) %> Get in touch</h3><a href="/#contact">Registration / Enquiry</a><% if (site.email) { %><a href="mailto:<%= site.email %>"><%= site.email %></a><% } else { %><span>Contact us via the enquiry form</span><% } %></div>
+      <div class="footer-col"><h3><%- include("icon", { name: "info", size: 16 }) %> Important info</h3><a href="/privacy">Privacy Notice</a><a href="/terms">Terms &amp; Conditions</a><a href="/risk-disclosure">Risk Disclosure</a></div>
     </div>
     <div class="footer-bottom"><span>© <span data-year></span> Nexvora Trading &amp; Solution. All rights reserved.</span><span class="footer-risk"><%- include("icon", { name: "shield-alert", size: 15 }) %> Trading involves risk. Educational content only; no guaranteed outcomes.</span></div>
   </div>
 </footer>
 <a class="back-top" href="#home" aria-label="Back to top"><%- include("icon", { name: "arrow-up", size: 20 }) %></a>
 <script src="/js/main.js" defer></script>
+<script src="/js/hero-canvas.js" defer></script>
+<script src="/js/background-canvas.js" defer></script>
+<script src="/js/ticker.js" defer></script>

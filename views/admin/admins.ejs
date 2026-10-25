@@ -1,0 +1,52 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <h1>Admin accounts</h1>
+  <div class="admin-card table-card">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Name</th><th>Email</th><th>Status</th><th>Created</th><th>Last login</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <% admins.forEach((entry) => { %>
+        <tr>
+          <td><strong><%= entry.name %></strong><% if (Number(entry.id) === Number(admin.id)) { %> <span class="admin-muted">(you)</span><% } %></td>
+          <td><%= entry.email %></td>
+          <td><span class="badge <%= entry.is_active ? "badge-on" : "badge-off" %>"><%= entry.is_active ? "Active" : "Deactivated" %></span></td>
+          <td class="nowrap"><%= formatDate(entry.created_at) %></td>
+          <td class="nowrap"><%= entry.last_login_at ? formatDateTime(entry.last_login_at) : "Never" %></td>
+          <td class="actions">
+            <% if (Number(entry.id) !== Number(admin.id)) { %>
+            <form method="post" action="/admin/admins/<%= entry.id %>/toggle" class="js-confirm" data-confirm="<%= entry.is_active ? "Deactivate this admin? They will no longer be able to sign in." : "Reactivate this admin?" %>">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="admin-btn small" type="submit"><%= entry.is_active ? "Deactivate" : "Reactivate" %></button>
+            </form>
+            <% } else { %>
+            <span class="admin-muted">—</span>
+            <% } %>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <form class="admin-card admin-form" method="post" action="/admin/admins">
+    <h2>Add an admin</h2>
+    <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Full name
+      <input type="text" name="name" required maxlength="100" value="<%= values.name || "" %>">
+    </label>
+    <label>Email address
+      <input type="email" name="email" required maxlength="254" value="<%= values.email || "" %>">
+    </label>
+    <label>Password (minimum 10 characters)
+      <input type="password" name="password" required minlength="10" autocomplete="new-password">
+    </label>
+    <div class="form-actions">
+      <button class="admin-btn primary" type="submit">Create admin account</button>
+    </div>
+    <p class="admin-muted">Admins are never deleted — deactivate an account to revoke access. You cannot deactivate your own account or the last remaining active admin.</p>
+  </form>
+</main>
+<%- include("partials/foot") %>

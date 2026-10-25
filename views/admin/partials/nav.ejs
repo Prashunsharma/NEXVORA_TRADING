@@ -1,0 +1,22 @@
+<header class="admin-top">
+  <div class="admin-wrap admin-top-inner">
+    <a class="admin-brand" href="/admin">NEXVORA <span>Admin</span></a>
+    <% if (admin) { %>
+    <nav class="admin-nav" aria-label="Admin">
+      <a href="/admin">Dashboard</a>
+      <a href="/admin/offers">Offers</a>
+      <a href="/admin/testimonials">Testimonials</a>
+      <a href="/admin/admins">Admins</a>
+      <a href="/admin/password">Password</a>
+      <a href="/" target="_blank" rel="noopener noreferrer">View site ↗</a>
+      <form method="post" action="/admin/logout" class="logout-form">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <button type="submit" class="nav-logout">Log out (<%= admin.name %>)</button>
+      </form>
+    </nav>
+    <% } %>
+  </div>
+</header>
+<% if (flash) { %>
+<div class="admin-wrap"><p class="flash <%= flash.type === "success" ? "flash-success" : "flash-error" %>" role="status"><%= flash.message %></p></div>
+<% } %>

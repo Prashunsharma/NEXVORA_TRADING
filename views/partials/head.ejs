@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#020b13">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#020b13">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eef4f0">
+  <script>(function(){try{var t=window.localStorage.getItem("nexvora-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","dark");}})();</script>
   <meta name="description" content="<%= description %>">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="<%= canonical %>">

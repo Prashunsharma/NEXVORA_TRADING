@@ -1,0 +1,42 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <div class="list-head">
+    <h1>Offers</h1>
+    <a class="admin-btn primary" href="/admin/offers/new">Add offer</a>
+  </div>
+  <% if (!offers.length) { %>
+  <div class="admin-card"><p class="admin-muted">No offers yet. Add the first one — it will appear in the homepage Offers section as soon as it is active.</p></div>
+  <% } else { %>
+  <div class="admin-card table-card">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Image</th><th>Title</th><th>Status</th><th>Window</th><th>Order</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <% offers.forEach((offer) => { %>
+        <tr>
+          <td><img class="thumb" src="<%= offer.image_url %>" alt="" width="72" height="48" loading="lazy"></td>
+          <td><strong><%= offer.title %></strong><br><span class="admin-muted"><%= offer.description.slice(0, 90) %><%= offer.description.length > 90 ? "…" : "" %></span></td>
+          <td><span class="badge <%= offer.is_active ? "badge-on" : "badge-off" %>"><%= offer.is_active ? "Active" : "Hidden" %></span></td>
+          <td class="nowrap"><%= offer.starts_at ? formatDate(offer.starts_at) : "No start" %> → <%= offer.ends_at ? formatDate(offer.ends_at) : "No end" %></td>
+          <td><%= offer.sort_order %></td>
+          <td class="actions">
+            <a class="admin-btn small" href="/admin/offers/<%= offer.id %>/edit">Edit</a>
+            <form method="post" action="/admin/offers/<%= offer.id %>/toggle">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="admin-btn small" type="submit"><%= offer.is_active ? "Hide" : "Show" %></button>
+            </form>
+            <form method="post" action="/admin/offers/<%= offer.id %>/delete" class="js-confirm" data-confirm="Delete this offer permanently?">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="admin-btn small danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+</main>
+<%- include("partials/foot") %>

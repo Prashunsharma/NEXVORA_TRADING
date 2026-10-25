@@ -11,7 +11,6 @@
       <a href="/#programs"><%- include("icon", { name: "layers", size: 16, className: "nav-icon" }) %><span>Programs</span></a>
       <a href="/#community"><%- include("icon", { name: "message-circle", size: 16, className: "nav-icon" }) %><span>Community</span></a>
       <a href="/#contact"><%- include("icon", { name: "mail", size: 16, className: "nav-icon" }) %><span>Contact</span></a>
-      <a href="<%= site.social.telegram && site.social.telegram.startsWith("https://") ? site.social.telegram : '/#contact' %>" class="btn primary" <%= site.social.telegram && site.social.telegram.startsWith("https://") ? 'target="_blank" rel="noopener noreferrer"' : '' %>><%- include("icon", { name: "send", size: 16 }) %><span>Join Telegram</span><%- include("icon", { name: "arrow-up-right", size: 14 }) %></a>
     </nav>
     <div class="nav-right">
       <div class="social-mini" aria-label="Social profiles">
@@ -22,6 +21,7 @@
   <%- include("icon", { name: "users", size: 18 }) %>
   <span>Community</span>
 </a>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme" aria-pressed="false" title="Toggle day / night theme"><%- include("icon", { name: "sun", size: 19, className: "theme-icon theme-icon-sun" }) %><%- include("icon", { name: "moon", size: 19, className: "theme-icon theme-icon-moon" }) %></button>
       <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-controls="primary-navigation" aria-expanded="false"><%- include("icon", { name: "menu", size: 22 }) %></button>
     </div>
   </div>
