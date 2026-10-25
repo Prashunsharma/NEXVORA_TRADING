@@ -1,0 +1,42 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <div class="list-head">
+    <h1>Testimonials</h1>
+    <a class="admin-btn primary" href="/admin/testimonials/new">Add testimonial</a>
+  </div>
+  <% if (!testimonials.length) { %>
+  <div class="admin-card"><p class="admin-muted">No testimonials yet. Add the first one — it will appear in the homepage Community Feedback section as soon as it is active.</p></div>
+  <% } else { %>
+  <div class="admin-card table-card">
+    <table class="admin-table">
+      <thead>
+        <tr><th>Author</th><th>Quote</th><th>Rating</th><th>Status</th><th>Order</th><th>Actions</th></tr>
+      </thead>
+      <tbody>
+        <% testimonials.forEach((entry) => { %>
+        <tr>
+          <td><strong><%= entry.author_name %></strong><% if (entry.author_context) { %><br><span class="admin-muted"><%= entry.author_context %></span><% } %></td>
+          <td class="quote-cell"><%= entry.quote.slice(0, 120) %><%= entry.quote.length > 120 ? "…" : "" %></td>
+          <td class="nowrap"><%= entry.rating ? `${entry.rating} / 5` : "—" %></td>
+          <td><span class="badge <%= entry.is_active ? "badge-on" : "badge-off" %>"><%= entry.is_active ? "Active" : "Hidden" %></span></td>
+          <td><%= entry.sort_order %></td>
+          <td class="actions">
+            <a class="admin-btn small" href="/admin/testimonials/<%= entry.id %>/edit">Edit</a>
+            <form method="post" action="/admin/testimonials/<%= entry.id %>/toggle">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="admin-btn small" type="submit"><%= entry.is_active ? "Hide" : "Show" %></button>
+            </form>
+            <form method="post" action="/admin/testimonials/<%= entry.id %>/delete" class="js-confirm" data-confirm="Delete this testimonial permanently?">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+              <button class="admin-btn small danger" type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  <% } %>
+</main>
+<%- include("partials/foot") %>

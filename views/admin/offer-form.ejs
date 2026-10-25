@@ -1,0 +1,50 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <h1><%= offer ? "Edit offer" : "Add offer" %></h1>
+  <form class="admin-card admin-form" method="post" action="<%= offer ? `/admin/offers/${offer.id}` : "/admin/offers" %>">
+    <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Title *
+      <input type="text" name="title" required maxlength="160" value="<%= values.title || "" %>">
+    </label>
+    <label>Description *
+      <textarea name="description" required rows="4"><%= values.description || "" %></textarea>
+    </label>
+    <fieldset class="image-field" data-folder="nexvora/offers">
+      <legend>Offer image *</legend>
+      <label>Upload an image
+        <input type="file" accept="image/*" data-image-file>
+      </label>
+      <img class="image-preview" data-image-preview src="<%= values.image_url || "" %>" alt=""<% if (!values.image_url) { %> hidden<% } %>>
+      <label>or paste an image URL
+        <input type="url" name="image_url" data-image-url value="<%= values.image_url || "" %>" placeholder="https://…">
+      </label>
+      <input type="hidden" name="image_public_id" data-image-public-id value="<%= values.image_public_id || "" %>">
+      <p class="upload-status admin-muted" data-upload-status></p>
+      <% if (!cloudinaryConfigured) { %><p class="admin-muted">Direct upload is unavailable (Cloudinary is not configured on this server). Paste an image URL instead.</p><% } %>
+    </fieldset>
+    <label>Link (optional — the whole card links here)
+      <input type="url" name="link_url" value="<%= values.link_url || "" %>" placeholder="https://… or /page">
+    </label>
+    <div class="form-row">
+      <label>Sort order
+        <input type="number" name="sort_order" value="<%= values.sort_order != null ? values.sort_order : 0 %>" step="1">
+      </label>
+      <label>Starts at (optional)
+        <input type="datetime-local" name="starts_at" value="<%= toLocalInput(values.starts_at) %>">
+      </label>
+      <label>Ends at (optional)
+        <input type="datetime-local" name="ends_at" value="<%= toLocalInput(values.ends_at) %>">
+      </label>
+    </div>
+    <label class="checkbox">
+      <input type="checkbox" name="is_active"<%= (values.is_active === true || values.is_active === "on") ? " checked" : "" %>> Visible on the homepage
+    </label>
+    <div class="form-actions">
+      <button class="admin-btn primary" type="submit"><%= offer ? "Save changes" : "Create offer" %></button>
+      <a class="admin-btn" href="/admin/offers">Cancel</a>
+    </div>
+  </form>
+</main>
+<%- include("partials/foot") %>

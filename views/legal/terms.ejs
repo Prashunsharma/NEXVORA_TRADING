@@ -1,14 +1,13 @@
 <%- include("../partials/head", { title, description, canonical }) %>
-<body><%- include("../partials/header") %>
+<body><%- include("../partials/background") %><%- include("../partials/header") %>
 <main class="legal-page wrap">
-  <p class="eyebrow">Legal information · Draft</p><h1>Terms &amp; Conditions (Draft)</h1><p><strong>Last updated: 11 October 2026</strong></p>
-  <div class="legal-notice legal-draft"><strong>Draft — not ready for publication.</strong> These terms are a working outline only. They are not legal advice and must be reviewed for the actual business, products, jurisdiction and applicable consumer rules before use.</div><p>This website currently presents general information about Nexvora Trading &amp; Solution and planned market-learning resources.</p>
+  <p class="eyebrow">Legal information</p><h1>Terms &amp; Conditions</h1><p><strong>Last updated: 11 October 2026</strong></p>
+  <p>This website presents general information about Nexvora Trading &amp; Solution and its market-learning resources. By using this website, you agree to these terms.</p>
   <h2>Educational content only</h2><p>Content is for general educational and informational purposes. It is not individualized financial, investment, legal or tax advice, nor an offer or solicitation to buy or sell any financial instrument.</p>
   <h2>Market risk</h2><p>Trading can result in substantial losses. Past examples or hypothetical scenarios do not predict future results. No outcome, signal, profit or return is guaranteed. You are responsible for evaluating your circumstances and decisions.</p>
   <h2>Acceptable use</h2><p>Do not misuse the website, submit false information, attempt unauthorized access, disrupt its operation or use it for unlawful purposes.</p>
-  <h2>Intellectual property</h2><p>Unless stated otherwise, website text, branding and design are intended to belong to Nexvora Trading &amp; Solution or their respective rights holders. Do not reproduce protected materials without permission.</p>
+  <h2>Intellectual property</h2><p>Unless stated otherwise, website text, branding and design belong to Nexvora Trading &amp; Solution or their respective rights holders. Do not reproduce protected materials without permission.</p>
   <h2>Third-party links</h2><p>Links to third-party services are provided for convenience. Their content, availability, privacy practices and services are controlled by those providers.</p>
-  <h2>Changes and contact</h2><p>Website content and these terms may change. Configure a verified business contact email before publication so users have a reliable way to contact the business.</p>
-  <div class="legal-notice legal-draft"><strong>Required before launch:</strong> confirm the operating legal entity, governing law, limitation language and consumer-protection obligations with a qualified professional.</div>
+  <h2>Changes and contact</h2><p>Website content and these terms may change from time to time; the current version will always be published on this page.<% if (site.email) { %> If you have questions about these terms, contact us at <a class="inline-link" href="mailto:<%= site.email %>"><%= site.email %></a>.<% } else { %> If you have questions about these terms, contact us through the enquiry form on this website.<% } %></p>
   <p><a class="btn secondary" href="/">← Back to home</a></p>
 </main><%- include("../partials/footer") %></body></html>

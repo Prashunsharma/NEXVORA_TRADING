@@ -1,0 +1,17 @@
+<%- include("partials/head") %>
+<main class="admin-auth">
+  <form class="admin-card auth-card" method="post" action="/admin/login">
+    <h1>Nexvora Admin</h1>
+    <p class="admin-muted">Sign in to manage homepage offers and testimonials.</p>
+    <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Email address
+      <input type="email" name="email" required autocomplete="username" maxlength="254">
+    </label>
+    <label>Password
+      <input type="password" name="password" required autocomplete="current-password">
+    </label>
+    <button class="admin-btn primary" type="submit">Sign in</button>
+  </form>
+</main>
+<%- include("partials/foot") %>

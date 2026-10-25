@@ -1,0 +1,38 @@
+<!-- Site-wide ambient layer, included once on every page directly after the body tag:
+     a fixed full-viewport canvas with faint drifting candlesticks and dust particles
+     (public/js/background-canvas.js), the custom crosshair cursor elements (driven by
+     public/js/main.js), and the fixed bottom ticker bar with SIMULATED values
+     (public/js/ticker.js). All decorative: pointer-events none, aria-hidden where
+     duplicated, and the ticker is labelled Illustrative (not live market prices). -->
+<div class="site-bg" aria-hidden="true"><canvas class="site-bg-canvas" id="site-bg-canvas"></canvas></div>
+<div class="cursor-fx" id="cursor-fx" aria-hidden="true">
+  <span class="cursor-ring"></span>
+  <span class="cursor-dot"></span>
+</div>
+<div class="cursor-trail" id="cursor-trail" aria-hidden="true"></div>
+<%
+const tickerItems = [
+  { symbol: "NIFTY 50", value: "24,315.75", change: 0.42 },
+  { symbol: "BANKNIFTY", value: "51,240.60", change: -0.18 },
+  { symbol: "SENSEX", value: "79,842.10", change: 0.35 },
+  { symbol: "BTC/USDT", value: "97,412", change: -1.18 },
+  { symbol: "ETH/USDT", value: "3,412.55", change: 1.05 },
+  { symbol: "GOLD", value: "2,934.50", change: 0.90 },
+  { symbol: "SOL/USDT", value: "186.35", change: -2.14 }
+];
+%>
+<div class="ticker-bar" aria-label="Illustrative market ticker. Values are simulated for design purposes and are not live market data.">
+  <span class="ticker-live" aria-hidden="true"><i></i>LIVE</span>
+  <div class="ticker-viewport" aria-hidden="true">
+    <div class="ticker-track" id="ticker-track">
+      <% for (let copy = 0; copy < 2; copy += 1) { %>
+      <div class="ticker-set">
+        <% tickerItems.forEach((item) => { %>
+        <span class="ticker-item" data-symbol="<%= item.symbol %>"><b><%= item.symbol %></b><span class="ticker-value"><%= item.value %></span><span class="ticker-change <%= item.change >= 0 ? "up" : "down" %>"><%= item.change >= 0 ? "▲" : "▼" %> <%= Math.abs(item.change).toFixed(2) %>%</span></span>
+        <% }); %>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <span class="ticker-note" aria-hidden="true">Illustrative</span>
+</div>

@@ -1,0 +1,52 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <h1><%= testimonial ? "Edit testimonial" : "Add testimonial" %></h1>
+  <form class="admin-card admin-form" method="post" action="<%= testimonial ? `/admin/testimonials/${testimonial.id}` : "/admin/testimonials" %>">
+    <% if (error) { %><p class="form-error" role="alert"><%= error %></p><% } %>
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>Author name *
+      <input type="text" name="author_name" required maxlength="100" value="<%= values.author_name || "" %>">
+    </label>
+    <label>Author context (optional — e.g. program or role)
+      <input type="text" name="author_context" maxlength="160" value="<%= values.author_context || "" %>">
+    </label>
+    <label>Quote *
+      <textarea name="quote" required rows="4"><%= values.quote || "" %></textarea>
+    </label>
+    <div class="form-row">
+      <label>Rating (optional)
+        <select name="rating">
+          <option value=""<%= !values.rating ? " selected" : "" %>>No rating</option>
+          <% for (let star = 1; star <= 5; star += 1) { %>
+          <option value="<%= star %>"<%= Number(values.rating) === star ? " selected" : "" %>><%= star %> star<%= star === 1 ? "" : "s" %></option>
+          <% } %>
+        </select>
+      </label>
+      <label>Sort order
+        <input type="number" name="sort_order" value="<%= values.sort_order != null ? values.sort_order : 0 %>" step="1">
+      </label>
+    </div>
+    <fieldset class="image-field" data-folder="nexvora/avatars">
+      <legend>Avatar (optional)</legend>
+      <label>Upload an image
+        <input type="file" accept="image/*" data-image-file>
+      </label>
+      <img class="image-preview avatar-preview" data-image-preview src="<%= values.avatar_url || "" %>" alt=""<% if (!values.avatar_url) { %> hidden<% } %>>
+      <label>or paste an image URL
+        <input type="url" name="avatar_url" data-image-url value="<%= values.avatar_url || "" %>" placeholder="https://…">
+      </label>
+      <input type="hidden" name="avatar_public_id" data-image-public-id value="<%= values.avatar_public_id || "" %>">
+      <p class="upload-status admin-muted" data-upload-status></p>
+      <% if (!cloudinaryConfigured) { %><p class="admin-muted">Direct upload is unavailable (Cloudinary is not configured on this server). Paste an image URL instead.</p><% } %>
+    </fieldset>
+    <label class="checkbox">
+      <input type="checkbox" name="is_active"<%= (values.is_active === true || values.is_active === "on") ? " checked" : "" %>> Visible on the homepage
+    </label>
+    <div class="form-actions">
+      <button class="admin-btn primary" type="submit"><%= testimonial ? "Save changes" : "Create testimonial" %></button>
+      <a class="admin-btn" href="/admin/testimonials">Cancel</a>
+    </div>
+  </form>
+</main>
+<%- include("partials/foot") %>

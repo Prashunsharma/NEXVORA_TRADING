@@ -7,17 +7,20 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "check": "node --check server.js && node --check public/js/main.js",
+    "check": "node --check server.js && node --check public/js/main.js && node --check public/js/hero-canvas.js && node --check public/js/background-canvas.js && node --check public/js/ticker.js && node --check public/js/admin.js && node --check scripts/create-admin.js && node --check lib/store.js && node --check lib/cloudinary.js",
+    "create-admin": "node scripts/create-admin.js",
     "test": "node --test"
   },
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
+    "express-session": "^1.19.0",
     "helmet": "^8.0.0",
     "pg": "^8.13.1"
   },

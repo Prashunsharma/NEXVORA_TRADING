@@ -1,0 +1,32 @@
+<%- include("partials/head") %>
+<%- include("partials/nav") %>
+<main class="admin-wrap">
+  <h1>Dashboard</h1>
+  <p class="admin-muted">Welcome back, <%= admin.name %>. Content saved here appears on the homepage automatically.</p>
+  <div class="stat-grid">
+    <a class="admin-card stat-card" href="/admin/offers">
+      <strong><%= counts.offers %></strong>
+      <span>Offers (<%= counts.offersActive %> visible)</span>
+    </a>
+    <a class="admin-card stat-card" href="/admin/testimonials">
+      <strong><%= counts.testimonials %></strong>
+      <span>Testimonials (<%= counts.testimonialsActive %> visible)</span>
+    </a>
+    <a class="admin-card stat-card" href="/admin/admins">
+      <strong><%= counts.admins %></strong>
+      <span>Admin accounts (<%= counts.adminsActive %> active)</span>
+    </a>
+  </div>
+  <div class="admin-card">
+    <h2>Quick actions</h2>
+    <p>
+      <a class="admin-btn" href="/admin/offers/new">Add an offer</a>
+      <a class="admin-btn" href="/admin/testimonials/new">Add a testimonial</a>
+      <a class="admin-btn" href="/admin/admins">Manage admin accounts</a>
+    </p>
+    <% if (!cloudinaryConfigured) { %>
+    <p class="admin-muted">Cloudinary is not configured on this server, so image uploads are disabled — offer and avatar forms accept a pasted image URL instead. Add CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET to the environment to enable uploads.</p>
+    <% } %>
+  </div>
+</main>
+<%- include("partials/foot") %>
