@@ -7,6 +7,7 @@ const express = require("express");
 const helmet = require("helmet");
 const rateLimit = require("express-rate-limit");
 const session = require("express-session");
+const pgSession = require("connect-pg-simple")(session);
 const bcrypt = require("bcryptjs");
 const { Pool } = require("pg");
 const { createNeonHttpPool } = require("./lib/db");
@@ -118,9 +119,27 @@ app.use(express.static(path.join(__dirname, "public"), {
 
 // Sessions are only needed for the /admin panel, but the middleware is cheap
 // and keeps the login flow simple. Cookies are hardened per the environment.
+//
+// Sessions are stored in PostgreSQL (table "session", auto-created) whenever
+// a database is configured — NOT in process memory. The default in-memory
+// store loses every session (and its CSRF token) whenever the process
+// restarts or a request lands on a different instance, which hosts like
+// GoDaddy do routinely; that surfaced as "Invalid security token" on the
+// admin login right after the GoDaddy cutover (reproduced locally
+// 2026-11-22). The store only calls pool.query()/pool.on(), so it works
+// identically over the pg Pool and the neon-http adapter. Without a
+// database (local JSON development mode) it falls back to memory.
 app.use(session({
   name: "nexvora.sid",
   secret: sessionSecret,
+  store: pool
+    ? new pgSession({
+        pool,
+        tableName: "session",
+        createTableIfMissing: true,
+        pruneSessionInterval: false
+      })
+    : undefined,
   resave: false,
   saveUninitialized: false,
   cookie: {
