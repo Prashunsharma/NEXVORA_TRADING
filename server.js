@@ -9,6 +9,7 @@ const rateLimit = require("express-rate-limit");
 const session = require("express-session");
 const bcrypt = require("bcryptjs");
 const { Pool } = require("pg");
+const { createNeonHttpPool } = require("./lib/db");
 const { createStore } = require("./lib/store");
 const cloudinaryLib = require("./lib/cloudinary");
 
@@ -38,13 +39,21 @@ const contactEmail = process.env.CONTACT_EMAIL || "";
 
 // Neon supplies a TLS-ready connection string. Keep its sslmode settings intact rather than
 // disabling certificate verification with rejectUnauthorized:false.
+//
+// DB_DRIVER switch: "pg" (default) uses the direct TCP Pool below — this is
+// the Render path, unchanged. "neon-http" (set only on GoDaddy, whose
+// platform blocks outbound TCP port 5432 with EACCES) routes the same
+// queries to the same database over HTTPS via lib/db.js.
+const dbDriver = (process.env.DB_DRIVER || "pg").trim().toLowerCase();
 const pool = databaseUrl
-  ? new Pool({
-      connectionString: databaseUrl,
-      max: databasePoolSize,
-      idleTimeoutMillis: 30_000,
-      connectionTimeoutMillis: 10_000
-    })
+  ? dbDriver === "neon-http"
+    ? createNeonHttpPool(databaseUrl)
+    : new Pool({
+        connectionString: databaseUrl,
+        max: databasePoolSize,
+        idleTimeoutMillis: 30_000,
+        connectionTimeoutMillis: 10_000
+      })
   : null;
 
 if (pool) {
@@ -924,16 +933,15 @@ initializeDatabase()
     });
   })
   .catch(error => {
-  console.error("Startup failed:", error.code || error.name || "Error", error.message || "(no message)");
-  if (error && Array.isArray(error.errors)) {
-    for (const sub of error.errors) {
-      console.error("  caused by:", sub.code || sub.name || "Error", sub.message || "(no message)", sub.address || "", sub.port || "");
+    console.error("Startup failed:", error.code || error.name || "Error", error.message || "(no message)");
+    if (error && Array.isArray(error.errors)) {
+      for (const sub of error.errors) {
+        console.error("  caused by:", sub.code || sub.name || "Error", sub.message || "(no message)", sub.address || "", sub.port || "");
+      }
     }
-  }
-  console.error(error);
-  process.exit(1);
-});
-
+    console.error(error);
+    process.exit(1);
+  });
 
 async function shutdown() {
   if (pool) await pool.end();
